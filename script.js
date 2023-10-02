@@ -1,5 +1,7 @@
 let num = Math.floor(Math.random() * 200);
 let data;
+let game;
+let playerScore = 0;
 const options = {
   method: "GET",
   url: "https://opencritic-api.p.rapidapi.com/game/hall-of-fame/2016",
@@ -8,10 +10,16 @@ const options = {
     "X-RapidAPI-Host": "opencritic-api.p.rapidapi.com",
   },
 };
+const randomizeGame = () => {
+  let randomize = (num) => Math.floor(Math.random() * num);
+  game = data[randomize(12)];
+};
 const getStuff = async () => {
   try {
     const response = await fetch(options.url, options);
     data = await response.json();
+    randomizeGame();
+    console.log(game);
     placeData();
     console.log(data);
     // if (!result.name) ;
@@ -21,22 +29,34 @@ const getStuff = async () => {
 };
 const placeData = () => {
   let pic = document.querySelector("#pic");
-  pic.src = `https:img.opencritic.com/${data[1].images.box.og}`;
+  pic.src = `https:img.opencritic.com/${game.images.box.og}`;
 
   let title = document.querySelector(".title");
-  title.innerHTML = data[1].name;
+  title.innerHTML = game.name;
 
   let score = document.querySelector(".score");
-  score.innerHTML = data[1].topCriticScore;
+  score.innerHTML = game.topCriticScore;
 };
 
 const checkGuess = () => {
   let guess = document.querySelector(".guess");
-  let btn = document.querySelector("#btn");
-  // console.log(guess.value);
-  if (guess.value == data[1].topCriticScore) {
+  // let btn = document.querySelector("#btn");
+  // let container = document.querySelector("form-container");
+  let body = document.body;
+  let result = document.querySelector("#result");
+
+  if (guess.value == game.topCriticScore) {
     console.log("nice");
-  } else console.log("BRICK");
+    if (result.innerHTML !== "Correct") result.innerHTML = "Correct";
+    playerScore++;
+    console.log(playerScore);
+  } else {
+    console.log("BRICK");
+    result.innerHTML = "Wrong";
+  }
+};
+const play = () => {
+  playerScore = 0;
 };
 
 getStuff();
