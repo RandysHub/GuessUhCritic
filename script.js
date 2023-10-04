@@ -2,9 +2,17 @@ let num = Math.floor(Math.random() * 200);
 let data;
 let game;
 let playerScore = 0;
+const randomNumber = (min, max) => {
+  let num = Math.floor(Math.random() * (max - min) + min);
+  // console.log(num);
+  return num;
+};
 const options = {
   method: "GET",
-  url: "https://opencritic-api.p.rapidapi.com/game/hall-of-fame/2016",
+  url: `https://opencritic-api.p.rapidapi.com/game/hall-of-fame/20${randomNumber(
+    16,
+    23
+  )}`,
   headers: {
     "X-RapidAPI-Key": "4b961ab84dmshd7d90f4d1e3c191p187930jsne0c60ebee570",
     "X-RapidAPI-Host": "opencritic-api.p.rapidapi.com",
