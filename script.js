@@ -2,12 +2,11 @@ let num = Math.floor(Math.random() * 200);
 let data;
 let game;
 let playerScore = 0;
+let roundCount = 0;
 const randomNumber = (min, max) => {
-  let num = Math.floor(Math.random() * (max - min) + min);
-  // console.log(num);
-  return num;
+  return Math.floor(Math.random() * (max - min) + min);
 };
-const options = {
+let options = {
   method: "GET",
   url: `https://opencritic-api.p.rapidapi.com/game/hall-of-fame/20${randomNumber(
     16,
@@ -18,26 +17,37 @@ const options = {
     "X-RapidAPI-Host": "opencritic-api.p.rapidapi.com",
   },
 };
+const randomizeYear = () => {
+  options.url = `https://opencritic-api.p.rapidapi.com/game/hall-of-fame/20${randomNumber(
+    16,
+    23
+  )}`;
+};
 const randomizeGame = () => {
   let randomize = (num) => Math.floor(Math.random() * num);
   game = data[randomize(12)];
 };
 const getStuff = async () => {
   try {
+    randomizeYear();
     const response = await fetch(options.url, options);
     data = await response.json();
     randomizeGame();
     console.log(game);
     placeData();
     console.log(data);
-    // if (!result.name) ;
   } catch (error) {
     console.error(error);
   }
 };
+
 const placeData = () => {
   let pic = document.querySelector("#pic");
+
   pic.src = `https:img.opencritic.com/${game.images.box.og}`;
+  if (!pic.src) {
+    pic.src = `https:img.opencritic.com/${game.images.box.sm}`;
+  }
 
   let title = document.querySelector(".title");
   title.innerHTML = game.name;
@@ -48,9 +58,6 @@ const placeData = () => {
 
 const checkGuess = () => {
   let guess = document.querySelector(".guess");
-  // let btn = document.querySelector("#btn");
-  // let container = document.querySelector("form-container");
-  let body = document.body;
   let result = document.querySelector("#result");
 
   if (guess.value == game.topCriticScore) {
@@ -62,9 +69,22 @@ const checkGuess = () => {
     console.log("BRICK");
     result.innerHTML = "Wrong";
   }
+  checkRounds();
+  setTimeout(() => {
+    result.innerHTML = "";
+    // randomizeGame();
+    // placeData();
+    getStuff();
+    roundCount++;
+    console.log(roundCount);
+  }, 1200);
 };
-const play = () => {
-  playerScore = 0;
+const checkRounds = () => {
+  // playerScore = 0;
+  // roundCount = 0;
+  if (roundCount >= 10) {
+    alert(`GG you got ${playerScore}/10`);
+  }
 };
 
 getStuff();
