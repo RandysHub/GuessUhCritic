@@ -1,5 +1,9 @@
 body{
     background-color: rgb(242, 205, 205);
+    /* font-family: 'Gabarito', cursive; */
+    --font: 'Roboto Slab', serif;
+    font-family:var(--font)
+
 }
 
 .info{
@@ -17,8 +21,14 @@ body{
     animation: bounce 1s infinite;
     width: 10em;
     box-shadow: 10px 5px 5px rgba(255, 182, 193, 0.72);
+    border-radius: 20px;
+    border: 2px solid #ffffff;
 }
 
+#btn{
+    font: inherit;
+    font-weight: bold;
+}
 @keyframes bounce {
   0%, 100% {
     transform: translateY(-3%);

@@ -3,6 +3,7 @@ let data;
 let game;
 let playerScore = 0;
 let roundCount = 0;
+
 const randomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
@@ -56,9 +57,11 @@ const placeData = () => {
   score.innerHTML = game.topCriticScore;
 };
 
+let guess = document.querySelector(".guess");
 const checkGuess = () => {
-  let guess = document.querySelector(".guess");
   let result = document.querySelector("#result");
+
+  // Execute a function when the user presses a key on the keyboard
 
   if (guess.value == game.topCriticScore) {
     console.log("nice");
@@ -79,6 +82,16 @@ const checkGuess = () => {
     console.log(roundCount);
   }, 1200);
 };
+guess.addEventListener("keypress", function (event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    // document.querySelector("#btn").click();
+    checkGuess();
+  }
+});
 const checkRounds = () => {
   // playerScore = 0;
   // roundCount = 0;
