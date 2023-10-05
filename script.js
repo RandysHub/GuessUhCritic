@@ -75,9 +75,9 @@ const checkGuess = () => {
     correct = false;
   }
 
-  if (!correct) {
-    score.style.backgroundColor = "red";
-  } else score.style.backgroundColork = "-metacritic-green";
+  !correct
+    ? (score.style.backgroundColor = "red")
+    : (score.style.backgroundColor = "var(--metacritic-green)");
   score.style.visibility = "visible";
   checkRounds();
   setTimeout(() => {
@@ -91,15 +91,12 @@ const checkGuess = () => {
   }, 1500);
 };
 guess.addEventListener("keypress", function (event) {
-  // If the user presses the "Enter" key on the keyboard
   if (event.key === "Enter") {
-    // Cancel the default action, if needed
     event.preventDefault();
-    // Trigger the button element with a click
-    // document.querySelector("#btn").click();
     checkGuess();
   }
 });
+
 const checkRounds = () => {
   // playerScore = 0;
   // roundCount = 0;
