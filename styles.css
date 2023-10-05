@@ -1,6 +1,31 @@
-#pic{
-    width: 10em;
+body{
+    background-color: rgb(242, 205, 205);
 }
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .score{
     visibility: hidden;
+}
+
+#pic{
+    animation: bounce 1s infinite;
+    width: 10em;
+    box-shadow: 10px 5px 5px rgba(255, 182, 193, 0.72);
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-3%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
 }
