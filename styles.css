@@ -2,21 +2,26 @@ body{
     background-color: rgb(242, 205, 205);
     /* font-family: 'Gabarito', cursive; */
     --font: 'Roboto Slab', serif;
-    font-family:var(--font)
+    font-family:var(--font);
+    --metacritic-green: #00ce7a;
 
 }
 
 .info{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
-
 .score{
+    text-align: center;
     visibility: hidden;
+    background-color: var(--metacritic-green);
+    border-radius: 6px;
+    height: 4rem;
+    width: 4rem; 
+    font-size: 2.25rem;
+    /* line-height: 2.5rem; */
 }
-
 #pic{
     animation: bounce 1s infinite;
     width: 10em;

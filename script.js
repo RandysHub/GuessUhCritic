@@ -58,29 +58,37 @@ const placeData = () => {
 };
 
 let guess = document.querySelector(".guess");
+
 const checkGuess = () => {
   let result = document.querySelector("#result");
-
-  // Execute a function when the user presses a key on the keyboard
-
+  let score = document.querySelector(".score");
+  let correct;
   if (guess.value == game.topCriticScore) {
     console.log("nice");
     if (result.innerHTML !== "Correct") result.innerHTML = "Correct";
     playerScore++;
     console.log(playerScore);
+    correct = true;
   } else {
     console.log("BRICK");
     result.innerHTML = "Wrong";
+    correct = false;
   }
+
+  if (!correct) {
+    score.style.backgroundColor = "red";
+  } else score.style.backgroundColork = "-metacritic-green";
+  score.style.visibility = "visible";
   checkRounds();
   setTimeout(() => {
     result.innerHTML = "";
     // randomizeGame();
     // placeData();
+    score.style.visibility = "hidden";
     getStuff();
     roundCount++;
     console.log(roundCount);
-  }, 1200);
+  }, 1500);
 };
 guess.addEventListener("keypress", function (event) {
   // If the user presses the "Enter" key on the keyboard
