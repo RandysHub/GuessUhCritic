@@ -48,18 +48,18 @@ const getStuff = async () => {
 const placeData = () => {
   if (roundCount < 10) {
     let pic = document.querySelector("#pic");
-
-    pic.src = `https:img.opencritic.com/${game.images.box.og}`;
-    if (!pic.src) {
-      pic.src = `https:img.opencritic.com/${game.images.banner.sm}`;
+    if (game.images.box) {
+      pic.src = `https:img.opencritic.com/${game.images.box.og}`;
+    } else {
+      pic.src = `https:img.opencritic.com/${game.images.banner.og}`;
     }
-
-    let title = document.querySelector(".title");
-    title.innerHTML = game.name;
-
-    let score = document.querySelector(".score");
-    score.innerHTML = game.topCriticScore;
   }
+
+  let title = document.querySelector(".title");
+  title.innerHTML = game.name;
+
+  let score = document.querySelector(".score");
+  score.innerHTML = game.topCriticScore;
 };
 
 let guess = document.querySelector(".guess");
@@ -92,6 +92,7 @@ const checkGuess = () => {
     score.style.visibility = "hidden";
     getStuff();
     roundCount++;
+    updateRoundCount();
     console.log(roundCount);
   }, 1500);
 };
@@ -102,10 +103,12 @@ guess.addEventListener("keypress", function (event) {
     checkGuess();
   }
 });
-
-const checkRounds = () => {
+const updateRoundCount = () => {
   const roundCountSpan = document.querySelector(".round");
   roundCountSpan.innerHTML = `Round: ${roundCount}/10`;
+};
+
+const checkRounds = () => {
   if (roundCount >= 10) {
     const modal = document.querySelector(".modal");
     modal.innerHTML = `GG you got ${playerScore}/10.`;
