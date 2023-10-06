@@ -81,28 +81,34 @@ body{
 }
 
 
+footer{
+  position: absolute;
+  height: 1.8rem;
+  bottom: 0%;
+  background-color: #ffbd3f;
+  width: 100%;
+}
+
 #pic{
     animation: bounce 1s infinite;
     max-width: 10em;
-    box-shadow: 10px 5px 5px rgba(255, 182, 193, 0.72);
-    border-radius: 20px;
+    box-shadow: 10px 5px 5px #ffbd3f; 
+    border-radius: 20px; 
     border: 2px solid var(--our-pink);
 }
 
 #btn{
     position: relative;
     right: 1rem;
-    /* cursor: pointer;
+    cursor: pointer;
     font: inherit;
     font-size: .8rem;
     font-weight: bold;
     min-height: 1.4rem;
     border: 2px solid black;
     border-radius: 10px;
-    padding: 10px; */
+    padding: 10px;
 
-    /* margin: 0;
-    padding: 0; */
 }
 
 .button{
