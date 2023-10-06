@@ -1,19 +1,47 @@
+*{
+}
+
 :root{
   font-size: 26px;
 }
 
 body{
-    background-color: rgb(242, 205, 205);
+    --lightgreen: #D7FCD4;
+    background-color: white;
     /* font-family: 'Gabarito', cursive; */
     --font: 'Roboto Slab', serif;
     font-family:var(--font);
     --metacritic-green: #00ce7a;
+    padding: 0;
+    margin: 0;
 
 }
 
 .header{
   font-size: clamp(.2rem,1.7rem,2rem);
   margin-top: 0;
+  top:0%;
+  left: 0%;
+  margin-left: 3px;
+}
+
+.banner{
+  background-color: black;
+  position: static;
+  width: 100%;
+  /* text-align: center; */
+  padding: 0;
+  margin: 0;
+  border-radius: 3px;
+  max-height: 2.2rem;
+  /* box-shadow: 5px 5px 5px rgba(233, 206, 206, 0.822) ; */
+}
+
+.logo{
+  position: relative;
+  bottom:.2rem;
+  max-width:2rem;
+
 }
 
 .info{
@@ -53,28 +81,51 @@ body{
 }
 
 
-
-
-
 #pic{
     animation: bounce 1s infinite;
     max-width: 10em;
     box-shadow: 10px 5px 5px rgba(255, 182, 193, 0.72);
     border-radius: 20px;
-    border: 2px solid #ffffff;
+    border: 2px solid var(--our-pink);
 }
 
 #btn{
     position: relative;
     right: 1rem;
-    cursor: pointer;
+    /* cursor: pointer;
     font: inherit;
     font-size: .8rem;
     font-weight: bold;
     min-height: 1.4rem;
-    margin: 0;
-    padding: 0;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px; */
+
+    /* margin: 0;
+    padding: 0; */
 }
+
+.button{
+  
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  background: white;
+  color: var(--our-pink);
+  border-radius: 8px;
+  padding: 14px 24px 16px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 200ms,background 200ms;
+  
+}
+
+.button:hover{
+  transform: translateY(-2px);
+}
+
 
 @keyframes bounce {
   0%, 100% {
