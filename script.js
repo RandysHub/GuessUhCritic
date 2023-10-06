@@ -3,6 +3,8 @@ let data;
 let game;
 let playerScore = 0;
 let roundCount = 0;
+const roundCountSpan = document.querySelector(".round");
+roundCountSpan.innerHTML = `Round: 0/10`;
 
 const randomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
@@ -28,6 +30,7 @@ const randomizeGame = () => {
   let randomize = (num) => Math.floor(Math.random() * num);
   game = data[randomize(12)];
 };
+
 const getStuff = async () => {
   try {
     randomizeYear();
@@ -43,18 +46,20 @@ const getStuff = async () => {
 };
 
 const placeData = () => {
-  let pic = document.querySelector("#pic");
+  if (roundCount < 10) {
+    let pic = document.querySelector("#pic");
 
-  pic.src = `https:img.opencritic.com/${game.images.box.og}`;
-  if (!pic.src) {
-    pic.src = `https:img.opencritic.com/${game.images.banner.sm}`;
+    pic.src = `https:img.opencritic.com/${game.images.box.og}`;
+    if (!pic.src) {
+      pic.src = `https:img.opencritic.com/${game.images.banner.sm}`;
+    }
+
+    let title = document.querySelector(".title");
+    title.innerHTML = game.name;
+
+    let score = document.querySelector(".score");
+    score.innerHTML = game.topCriticScore;
   }
-
-  let title = document.querySelector(".title");
-  title.innerHTML = game.name;
-
-  let score = document.querySelector(".score");
-  score.innerHTML = game.topCriticScore;
 };
 
 let guess = document.querySelector(".guess");
@@ -81,16 +86,16 @@ const checkGuess = () => {
     : (score.style.backgroundColor = "var(--metacritic-green)");
   score.style.visibility = "visible";
   checkRounds();
+
   setTimeout(() => {
     result.innerHTML = "";
-    // randomizeGame();
-    // placeData();
     score.style.visibility = "hidden";
     getStuff();
     roundCount++;
     console.log(roundCount);
   }, 1500);
 };
+
 guess.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -99,8 +104,8 @@ guess.addEventListener("keypress", function (event) {
 });
 
 const checkRounds = () => {
-  // playerScore = 0;
-  // roundCount = 0;
+  const roundCountSpan = document.querySelector(".round");
+  roundCountSpan.innerHTML = `Round: ${roundCount}/10`;
   if (roundCount >= 10) {
     const modal = document.querySelector(".modal");
     modal.innerHTML = `GG you got ${playerScore}/10.`;
