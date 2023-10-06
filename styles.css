@@ -13,15 +13,22 @@ body{
     align-items: center;
 }
 .score{
+  font-family: ProximaNova,sans-serif;
     text-align: center;
     visibility: hidden;
     background-color: var(--metacritic-green);
     border-radius: 6px;
-    height: 4rem;
-    width: 4rem; 
+    height: 3.5rem;
+    width: 3.5rem; 
     font-size: 2.25rem;
-    /* line-height: 2.5rem; */
+    font-weight: bolder;
+    line-height: 3.5rem;
+    margin-bottom: 1rem;
 }
+.guess{
+  height:1.2rem
+}
+
 #pic{
     animation: bounce 1s infinite;
     width: 10em;
@@ -31,9 +38,13 @@ body{
 }
 
 #btn{
+    cursor: pointer;
     font: inherit;
+    font-size: .8rem;
     font-weight: bold;
+    height: 1.5rem;
 }
+
 @keyframes bounce {
   0%, 100% {
     transform: translateY(-3%);

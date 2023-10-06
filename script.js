@@ -47,7 +47,7 @@ const placeData = () => {
 
   pic.src = `https:img.opencritic.com/${game.images.box.og}`;
   if (!pic.src) {
-    pic.src = `https:img.opencritic.com/${game.images.box.sm}`;
+    pic.src = `https:img.opencritic.com/${game.images.banner.sm}`;
   }
 
   let title = document.querySelector(".title");
@@ -63,6 +63,7 @@ const checkGuess = () => {
   let result = document.querySelector("#result");
   let score = document.querySelector(".score");
   let correct;
+
   if (guess.value == game.topCriticScore) {
     console.log("nice");
     if (result.innerHTML !== "Correct") result.innerHTML = "Correct";
@@ -101,8 +102,15 @@ const checkRounds = () => {
   // playerScore = 0;
   // roundCount = 0;
   if (roundCount >= 10) {
-    alert(`GG you got ${playerScore}/10`);
+    const modal = document.querySelector(".modal");
+    modal.innerHTML = `GG you got ${playerScore}/10.`;
+    openModal();
   }
+};
+
+const openModal = () => {
+  const modal = document.querySelector(".modal");
+  modal.showModal();
 };
 
 getStuff();
