@@ -68,7 +68,7 @@ const checkGuess = () => {
   let result = document.querySelector("#result");
   let score = document.querySelector(".score");
   let correct;
-
+  if (guess.value == "") return;
   if (guess.value == game.topCriticScore) {
     console.log("nice");
     if (result.innerHTML !== "Correct") result.innerHTML = "Correct";
