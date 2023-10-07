@@ -1,16 +1,12 @@
-
-
 :root{
   font-size: 26px;
 }
-
 body{
-    --lightgreen: #D7FCD4;
-    background-color: white;
-    /* font-family: 'Gabarito', cursive; */
     --font: 'Roboto Slab', serif;
-    font-family:var(--font);
+    --lightgreen: #D7FCD4;
     --metacritic-green: #00ce7a;
+    background-color: white;
+    font-family:var(--font);
     padding: 0;
     margin: 0;
 
@@ -25,6 +21,8 @@ body{
 }
 
 .banner{
+  display: flex;
+  flex-direction: row;
   background-color: black;
   position: static;
   width: 100%;
@@ -66,6 +64,68 @@ body{
     top: 2vh;
 
 }
+
+
+.menu-btn{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: all .5 ease-in-out;
+  border: 3px solid white
+}
+
+.menu-btn-burger{
+  width: 50px;
+  height: 6px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
+
+}
+
+.menu-btn-burger::before,
+.menu-btn-burger::after{
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 6px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
+  transition: all .5s ease-in-out;
+
+
+}
+
+
+/* burger animations */
+
+.menu-btn-burger::before{
+  transform: translateY(-16px);
+}
+
+.menu-btn-burger::after{
+  transform: translateY(16px);
+}
+
+.menu-btn.open .menu-btn-burger {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+
+.menu-btn.open .menu-btn-burger::before{
+  transform:  rotate(45deg) translate(35px,-35px);
+}
+
+.menu-btn.open .menu-btn-burger::after{
+  transform:  rotate(-45deg) translate(35px,35px);
+}
+
 .form-container{
   /* min-width: 18rem; */
 }
