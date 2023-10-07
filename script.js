@@ -71,13 +71,11 @@ const checkGuess = () => {
   if (guess.value == "") return;
   if (guess.value == game.topCriticScore) {
     console.log("nice");
-    if (result.innerHTML !== "Correct") result.innerHTML = "Correct";
     playerScore++;
     console.log(playerScore);
     correct = true;
   } else {
     console.log("BRICK");
-    result.innerHTML = "Wrong";
     correct = false;
   }
 
@@ -88,11 +86,11 @@ const checkGuess = () => {
   checkRounds();
 
   setTimeout(() => {
-    result.innerHTML = " ";
     score.style.visibility = "hidden";
     getStuff();
-    roundCount++;
+    if (roundCount !== 10) roundCount++;
     updateRoundCount();
+    updateScore();
     console.log(roundCount);
   }, 1500);
 };
@@ -103,15 +101,23 @@ guess.addEventListener("keypress", function (event) {
     checkGuess();
   }
 });
+
 const updateRoundCount = () => {
   const roundCountSpan = document.querySelector(".round");
   roundCountSpan.innerHTML = `Round: ${roundCount}/10`;
 };
 
+// const updateScore = () => {
+//   const score = document.querySelector(".player-score");
+//   score.innerHTML = `${playerScore}`;
+//   console.log(playerScore);
+// };
+
 const checkRounds = () => {
   if (roundCount >= 10) {
     const modal = document.querySelector(".modal");
-    modal.innerHTML = `GG you got ${playerScore}/10.`;
+    let msg = `GG you got ${playerScore}/10...`;
+    modal.innerHTML = msg + modal.innerHTML;
     openGGModal();
   }
 };

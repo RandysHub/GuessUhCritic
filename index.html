@@ -10,26 +10,32 @@
     <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
+
 <body>
    <div class="info">
-    <dialog class="modal">
-    </dialog>
+    <div class="modal-container">
+        <dialog class="modal">
+            <button id="play-again-btn" class="modal-button btn button">Play Again?</button>
+        </dialog>
+    </div>
     <div class="banner">
         <div class="menu-btn">
             <div class="menu-btn-burger"></div>
         </div>
-        <img class="logo" src="./GuessUh.png" alt="">
+        <a href="#">
+            <img class="logo" src="./GuessUh.png" alt="">
+        </a>   
     </div>
+    
+    <!-- <div class="player-score"></div> -->
     <div class="title-score">
-        <!-- <h2 class="title"></h2> -->
         <div class="score"></div>
     </div>
         <img id="pic" src="">
-    <p id="result"></p>
     <div class="form-container">
             <span class="round"></span>
             <input type="number" class="guess" >
-            <button id="btn" class="button" type="submit" onclick="checkGuess()">Guess</button>
+            <button  class="button btn" type="submit" onclick="checkGuess()">Guess</button>
     </div>
     <footer>
     </footer>
