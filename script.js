@@ -55,8 +55,8 @@ const placeData = () => {
     }
   }
 
-  let title = document.querySelector(".title");
-  title.innerHTML = game.name;
+  // let title = document.querySelector(".title");
+  // title.innerHTML = game.name;
 
   let score = document.querySelector(".score");
   score.innerHTML = game.topCriticScore;
@@ -88,7 +88,7 @@ const checkGuess = () => {
   checkRounds();
 
   setTimeout(() => {
-    result.innerHTML = "";
+    result.innerHTML = " ";
     score.style.visibility = "hidden";
     getStuff();
     roundCount++;
@@ -112,11 +112,11 @@ const checkRounds = () => {
   if (roundCount >= 10) {
     const modal = document.querySelector(".modal");
     modal.innerHTML = `GG you got ${playerScore}/10.`;
-    openModal();
+    openGGModal();
   }
 };
 
-const openModal = () => {
+const openGGModal = () => {
   const modal = document.querySelector(".modal");
   modal.showModal();
 };
