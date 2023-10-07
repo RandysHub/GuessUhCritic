@@ -53,7 +53,8 @@ body{
 .score{
   font-family: ProximaNova,sans-serif;
     text-align: center;
-    visibility: hidden;
+    /* visibility: hidden; */
+    opacity: 0;
     background-color: var(--metacritic-green);
     border-radius: 6px;
     height: 3.5rem;
@@ -65,6 +66,7 @@ body{
     position: relative;
     /* left: 7vw;  */
     top: .3rem; 
+    transition: opacity 0.3s
 
 }
 

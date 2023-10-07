@@ -54,12 +54,12 @@ const placeData = () => {
       pic.src = `https:img.opencritic.com/${game.images.banner.og}`;
     }
   }
-
   // let title = document.querySelector(".title");
   // title.innerHTML = game.name;
-
-  let score = document.querySelector(".score");
-  score.innerHTML = game.topCriticScore;
+  setTimeout(() => {
+    let score = document.querySelector(".score");
+    score.innerHTML = game.topCriticScore;
+  }, 300);
 };
 
 let guess = document.querySelector(".guess");
@@ -82,16 +82,18 @@ const checkGuess = () => {
   !correct
     ? (score.style.backgroundColor = "red")
     : (score.style.backgroundColor = "var(--metacritic-green)");
-  score.style.visibility = "visible";
+  // score.style.visibility = "visible";
+  score.style.opacity = 1;
   checkRounds();
 
   setTimeout(() => {
-    score.style.visibility = "hidden";
+    // score.style.visibility = "hidden";
+    // score.style.display = "none";
+    score.style.opacity = 0;
     getStuff();
     if (roundCount !== 10) roundCount++;
     updateRoundCount();
     updateScore();
-    console.log(roundCount);
   }, 1500);
 };
 
