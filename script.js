@@ -46,7 +46,7 @@ const getStuff = async () => {
 };
 
 const placeData = () => {
-  if (roundCount < 10) {
+  if (roundCount <= 10) {
     let pic = document.querySelector("#pic");
     if (game.images.box) {
       pic.src = `https:img.opencritic.com/${game.images.box.og}`;
@@ -90,10 +90,12 @@ const checkGuess = () => {
     // score.style.visibility = "hidden";
     // score.style.display = "none";
     score.style.opacity = 0;
+    if (roundCount !== 10) {
+      roundCount++;
+    }
     getStuff();
-    if (roundCount !== 10) roundCount++;
     updateRoundCount();
-    updateScore();
+    // updateScore();
   }, 1500);
 };
 

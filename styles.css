@@ -1,6 +1,12 @@
 :root{
   font-size: 26px;
 }
+
+*{
+  /* margin: 0;
+  padding: 0; */
+  /* overflow-x: hidden; */
+}
 body{
     --font: 'Roboto Slab', serif;
     --lightgreen: #D7FCD4;
@@ -139,6 +145,8 @@ body{
 .form-container{
   position: relative;
   top: 4rem;
+  left: 2rem;
+
 }
 
 .guess{
@@ -146,8 +154,8 @@ body{
   right: 1rem;
   min-height:1rem;
   min-width: 5rem;
-  max-width: 10rem;
-  bottom: .1rem;
+  max-width: 8rem;
+  /* bottom: .1rem; */
   font-size: .8rem;
   border-radius: 6px;
   line-height: 1.5;
@@ -170,7 +178,8 @@ body{
 
 .round{
   position: relative;
-  right: 1rem;
+  /* right: 1rem; */
+  top: 1rem;
 }
 
 .title-score{
@@ -189,13 +198,13 @@ footer{
   height: 1.8rem;
   bottom: 0%;
   background-color: #ffbd3f;
-  width: 100%;
+  width: 100vw;
 }
 
 #pic{
     animation: bounce 1s infinite;
     max-width: 10em;
-    box-shadow: 8px 5px 4px #ffbd3f; 
+    box-shadow: 10px 10px 4px #ffbd3f; 
     border-radius: 20px; 
     border: 2px solid var(--our-pink);
 }
