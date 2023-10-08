@@ -68,36 +68,72 @@ const checkGuess = () => {
   let result = document.querySelector("#result");
   let score = document.querySelector(".score");
   let correct;
+  let color;
   if (guess.value == "") return;
-  if (guess.value == game.topCriticScore) {
-    console.log("nice");
-    playerScore++;
-    console.log(playerScore);
-    correct = true;
-  } else {
-    console.log("BRICK");
-    correct = false;
-  }
+  calculateScore(score);
+  // changeScoreColor(score);
+  // !correct
+  //   ? (score.style.backgroundColor = "red")
+  //   : (score.style.backgroundColor = "var(--metacritic-green)");
 
-  !correct
-    ? (score.style.backgroundColor = "red")
-    : (score.style.backgroundColor = "var(--metacritic-green)");
-  // score.style.visibility = "visible";
   score.style.opacity = 1;
   checkRounds();
 
   setTimeout(() => {
-    // score.style.visibility = "hidden";
-    // score.style.display = "none";
     score.style.opacity = 0;
     if (roundCount !== 10) {
       roundCount++;
+      getStuff(); //Moved this in here to stop rendering after 10th game. Move back out if issue.
     }
-    getStuff();
+
     updateRoundCount();
-    // updateScore();
   }, 1500);
 };
+
+const calculateScore = (score) => {
+  let gameScore = game.topCriticScore;
+  console.log(guess.value - gameScore);
+  if (guess.value == gameScore) {
+    console.log("Bullseye. What a Chad.");
+    playerScore += 5;
+    console.log(playerScore);
+    score.style.backgroundColor = "purple";
+  } else if (guess.value - gameScore == 1 || gameScore - guess.value == 1) {
+    playerScore += 3;
+    console.log("Not bad");
+    score.style.backgroundColor = "var(--metacritic-green)";
+    console.log(playerScore);
+  } else if (Math.abs(guess.value - gameScore) <= 3) {
+    playerScore += 1;
+    console.log(playerScore);
+    console.log("meh");
+    score.style.backgroundColor = "var(--metacritic-yellow)";
+  } else {
+    console.log("BRICK");
+    console.log(playerScore);
+    score.style.backgroundColor = "var(--metacritic-red)";
+  }
+};
+
+// const changeScoreColor = (score) => {
+//   switch (color) {
+//     case "rainbow":
+//       score.style.backgroundColor = "purple";
+//       console.log(score.style.backgroundColor);
+//       break;
+//     case "green":
+//       score.style.backgroundColor = "var(--metacritic-green)";
+//       console.log(score.style.backgroundColor);
+//       break;
+//     case "yellow":
+//       score.style.backgroundColor = "var(--metacritic-yellow)";
+//       console.log(score.style.backgroundColor);
+//       break;
+//     default:
+//       score.style.backgroundColor = "var(--metacritic-red)";
+//       console.log(score.style.backgroundColor);
+//   }
+// };
 
 guess.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
@@ -120,7 +156,7 @@ const updateRoundCount = () => {
 const checkRounds = () => {
   if (roundCount >= 10) {
     const modal = document.querySelector(".modal");
-    let msg = `GG you got ${playerScore}/10...`;
+    let msg = `GG you got ${playerScore}/10`;
     modal.innerHTML = msg + modal.innerHTML;
     openGGModal();
   }

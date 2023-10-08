@@ -9,8 +9,9 @@
 }
 body{
     --font: 'Roboto Slab', serif;
-    --lightgreen: #D7FCD4;
     --metacritic-green: #00ce7a;
+    --metacritic-yellow:#ffbd3f;
+    --metacritic-red:#ff6874;
     background-color: white;
     font-family:var(--font);
     padding: 0;
