@@ -73,8 +73,16 @@ body{
     position: relative;
     /* left: 7vw;  */
     top: .3rem; 
-    transition: opacity 0.3s
 
+}
+
+.score-indicator{
+  position: relative;
+  left: 1vw;
+  top: 2vh;
+  opacity: 0;
+  transition: opacity 0.3s;
+  color: var(--metacritic-red);
 }
 
 .modal {
