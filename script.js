@@ -67,16 +67,16 @@ const placeData = () => {
 let guess = document.querySelector(".guess");
 
 const checkGuess = () => {
-  let result = document.querySelector("#result");
   let score = document.querySelector(".score");
   let scoreIndicator = document.querySelector(".score-indicator");
-  let correct;
-  let color;
+  scoreIndicator.classList.remove("grad2");
+  score.classList.remove("grad1");
+  score.style.opacity = 1;
+  scoreIndicator.style.opacity = 1;
+
   if (guess.value == "") return;
   calculateScore(score, scoreIndicator);
 
-  score.style.opacity = 1;
-  scoreIndicator.style.opacity = 1;
   checkRounds();
 
   setTimeout(() => {
@@ -86,9 +86,8 @@ const checkGuess = () => {
       roundCount++;
       getStuff(); //Moved this in here to stop rendering after 10th game. Move back out if issue.
     }
-
     updateRoundCount();
-  }, 1500);
+  }, 1000);
 };
 
 const calculateScore = (score, scoreIndicator) => {
@@ -98,8 +97,9 @@ const calculateScore = (score, scoreIndicator) => {
     console.log("Bullseye. What a Chad.");
     playerScore += 5;
     scoreIndicator.innerHTML = `+5`;
+    scoreIndicator.classList.add("grad2");
     console.log(playerScore);
-    score.style.backgroundColor = "purple";
+    score.classList.add("grad1");
   } else if (guess.value - gameScore == 1 || gameScore - guess.value == 1) {
     playerScore += 3;
     scoreIndicator.innerHTML = `+3`;
