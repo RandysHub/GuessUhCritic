@@ -87,7 +87,7 @@ const checkGuess = () => {
       getStuff(); //Moved this in here to stop rendering after 10th game. Move back out if issue.
     }
     updateRoundCount();
-  }, 1000);
+  }, 1300);
 };
 
 const calculateScore = (score, scoreIndicator) => {
@@ -141,7 +141,7 @@ const updateRoundCount = () => {
 const checkRounds = () => {
   if (roundCount >= 10) {
     const modal = document.querySelector(".modal");
-    let msg = `GG you got ${playerScore} points!`;
+    let msg = `GG you got ${playerScore} points!/50`;
     modal.innerHTML = msg + modal.innerHTML;
     openGGModal();
   }

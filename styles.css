@@ -71,7 +71,7 @@ body{
     margin-bottom: 1rem;
     position: relative;
     top: .3rem; 
-    transition: opacity ease-in-out 0.3s;
+    transition: opacity .5s;
 
 }
 
@@ -80,7 +80,7 @@ body{
   left: 1vw;
   top: 3vh;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity  .5s;
   color: black;
   font-weight: bolder;
 
