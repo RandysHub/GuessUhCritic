@@ -73,14 +73,10 @@ body{
 }
 
 .player-score{
-  top: -4vh;
-  /* bottom: 15rem; */
+  top: -3vh;
   right: 50vw;
   color: var(--text-color);
   margin-left: 2vw;
-}
-.toggle-container{
-  /* left: 48vw; */
 }
 
 
