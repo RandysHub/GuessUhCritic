@@ -69,11 +69,12 @@ const checkGuess = () => {
   let scoreIndicator = document.querySelector(".score-indicator");
   scoreIndicator.classList.remove("grad2");
   score.classList.remove("grad1");
+
+  if (guess.value == "") return "stop";
+  calculateScore(score, scoreIndicator);
+
   score.style.opacity = 1;
   scoreIndicator.style.opacity = 1;
-
-  if (guess.value == "") return;
-  calculateScore(score, scoreIndicator);
 
   checkRounds();
 
