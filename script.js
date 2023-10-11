@@ -55,8 +55,6 @@ const placeData = () => {
       pic.src = `https:img.opencritic.com/${game.images.banner.og}`;
     }
   }
-  // let title = document.querySelector(".title");
-  // title.innerHTML = game.name;
   setTimeout(() => {
     let score = document.querySelector(".score");
     score.innerHTML = game.topCriticScore;
@@ -141,12 +139,19 @@ const updateScore = () => {
 const checkRounds = () => {
   if (roundCount == 1) {
     const modal = document.querySelector(".modal");
-    let msg = `GG you got ${playerScore} points!/`;
-    modal.innerHTML = msg + modal.innerHTML;
-    openGGModal();
+    let msg;
+    if (playerScore >= 25) {
+      msg = `GG you got ${playerScore} points! You passed`;
+    } else {
+      msg = `GG you got ${playerScore} points! You were ${
+        25 - playerScore
+      } away from passing.`;
+
+      modal.innerHTML = msg + modal.innerHTML;
+      openGGModal();
+    }
   }
 };
-
 const openGGModal = () => {
   const modal = document.querySelector(".modal");
   modal.showModal();
