@@ -70,13 +70,11 @@ const checkGuess = () => {
   scoreIndicator.classList.remove("grad2");
   score.classList.remove("grad1");
 
-  if (guess.value == "") return "stop";
+  if (guess.value == "") return;
   calculateScore(score, scoreIndicator);
 
   score.style.opacity = 1;
   scoreIndicator.style.opacity = 1;
-
-  checkRounds();
 
   setTimeout(() => {
     score.style.opacity = 0;
@@ -87,6 +85,7 @@ const checkGuess = () => {
     }
     updateRoundCount();
     updateScore();
+    checkRounds();
   }, 1300);
 };
 
@@ -140,7 +139,7 @@ const updateScore = () => {
 };
 
 const checkRounds = () => {
-  if (roundCount >= 10) {
+  if (roundCount == 1) {
     const modal = document.querySelector(".modal");
     let msg = `GG you got ${playerScore} points!/`;
     modal.innerHTML = msg + modal.innerHTML;

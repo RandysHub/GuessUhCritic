@@ -178,6 +178,8 @@ body{
 }
 .modal {
   border-radius: 30px;  
+  background-color: var(--background-color) ;
+  color: var(--text-color);
 }
 
 .modal::backdrop{
