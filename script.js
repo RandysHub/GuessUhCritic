@@ -3,8 +3,6 @@ let data;
 let game;
 let playerScore = 0;
 let roundCount = 0;
-const roundCountSpan = document.querySelector(".round");
-roundCountSpan.innerHTML = `Round: 0/10`;
 
 const randomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
@@ -47,6 +45,8 @@ const getStuff = async () => {
 };
 
 const placeData = () => {
+  const roundCountSpan = document.querySelector(".round");
+  if (roundCount == 0) roundCountSpan.innerHTML = `Round: 0/10`;
   if (roundCount <= 10) {
     let pic = document.querySelector("#pic");
     if (game.images.box) {
@@ -63,8 +63,6 @@ const placeData = () => {
     let scoreIndicator = document.querySelector(".score-indicator");
   }, 300);
 };
-
-let guess = document.querySelector(".guess");
 
 const checkGuess = () => {
   let score = document.querySelector(".score");
@@ -87,6 +85,7 @@ const checkGuess = () => {
       getStuff(); //Moved this in here to stop rendering after 10th game. Move back out if issue.
     }
     updateRoundCount();
+    updateScore();
   }, 1300);
 };
 
@@ -120,6 +119,7 @@ const calculateScore = (score, scoreIndicator) => {
   }
 };
 
+let guess = document.querySelector(".guess");
 guess.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -132,16 +132,16 @@ const updateRoundCount = () => {
   roundCountSpan.innerHTML = `Round: ${roundCount}/10`;
 };
 
-// const updateScore = () => {
-//   const score = document.querySelector(".player-score");
-//   score.innerHTML = `${playerScore}`;
-//   console.log(playerScore);
-// };
+const updateScore = () => {
+  const playerScoreSpan = document.querySelector(".player-score");
+  playerScoreSpan.textContent = `${playerScore}`;
+  console.log(playerScore);
+};
 
 const checkRounds = () => {
   if (roundCount >= 10) {
     const modal = document.querySelector(".modal");
-    let msg = `GG you got ${playerScore} points!/50`;
+    let msg = `GG you got ${playerScore} points!/`;
     modal.innerHTML = msg + modal.innerHTML;
     openGGModal();
   }

@@ -1,23 +1,36 @@
 :root{
   font-size: 26px;
+  --font: 'Roboto Slab', serif;
+  --metacritic-green: #00ce7a;
+  --metacritic-yellow:#ffbd3f;
+  --metacritic-red:#ff6874;
+  --dark-gray: rgba(35, 34, 34, 0.947);
+  --background-color:white;
+  --black:black;
+  --text-color:var(--black);
+  --input-color:white;
+  --toggle-edge:40vw;
 }
 
-*{
-  /* margin: 0;
-  padding: 0; */
-  /* overflow-x: hidden; */
+.dark-mode{
+  --background-color: var(--dark-gray);
+  --text-color:rgba(255, 255, 255, 0.777);
 }
+
 body{
-    --font: 'Roboto Slab', serif;
-    --metacritic-green: #00ce7a;
-    --metacritic-yellow:#ffbd3f;
-    --metacritic-red:#ff6874;
-    background-color: white;
-    font-family:var(--font);
-    padding: 0;
-    margin: 0;
-
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family:var(--font);
 }
+.info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 .header{
   font-size: clamp(.2rem,1.7rem,2rem);
@@ -46,16 +59,79 @@ body{
 
 }
 
-.info{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+.player-score,
+.toggle-container{
+  position: relative;
+  top: 0%;
+  margin: 0;
+  padding: 0;
 }
 
-/* .player-score{
+.player-score{
+  right:48vw;
+  color: var(--text-color);
+}
+.toggle-container{
+  left: 48vw;
+}
 
-} */
 
+.icon{
+  position: relative;
+  left: .5vw;
+  cursor: pointer;
+}
+
+
+
+.toggle {
+  --width: 1.5rem;
+  --height: calc(var(--width) / 2);
+  --border-radius: calc(var(--height) / 2);
+
+  display: inline-block;
+  cursor: pointer;
+}
+
+.toggle__input {
+  display: none;
+}
+
+.toggle__fill {
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--border-radius);
+  background: #dddddd;
+  transition: background 0.2s;
+}
+
+.toggle__input:checked ~ .toggle__fill {
+  background: rgb(69, 68, 68);
+}
+
+.toggle__fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--height);
+  width: var(--height);
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  border-radius: var(--border-radius);
+  transition: transform 0.2s;
+}
+
+.toggle__input:checked ~ .toggle__fill::after {
+  transform: translateX(var(--height));
+}
+
+.toggle-container{
+  display: flex;
+  flex-direction: column;
+}
 
 .score{
   font-family: ProximaNova,sans-serif;
@@ -77,13 +153,12 @@ body{
 
 .score-indicator{
   position: relative;
-  left: 1vw;
+  left: .5vw;
   top: 3vh;
   opacity: 0;
   transition: opacity  .5s;
   color: black;
   font-weight: bolder;
-
 }
 
 .grad1 {
@@ -183,24 +258,26 @@ body{
   padding: 5px 10px;
   transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
   border: 2px solid #dee1e2;
-  color: rgb(14, 14, 16);
+  color: var(--text-color);
   background: #dee1e2;
-  
+    background: var(--background-color);
 }
 
 .guess:focus{
     border-color:#ffbd3f;
-    background: #fff;
+    background-color: var(--input-color);
 }
 
 .guess:hover {
     border-color: #ccc;
+    background-color: var(--input-color);
 }
 
 .round{
   position: relative;
   /* right: 1rem; */
-  top: 1rem;
+  top: 2rem;
+  color: var(--text-color);
 }
 
 .title-score{
@@ -208,11 +285,6 @@ body{
   flex-direction: row;
 
 }
-
-/* .title{
-  position: relative;
-  left: 6vw
-} */
 
 footer{
   position: absolute;
@@ -225,9 +297,9 @@ footer{
 #pic{
     animation: bounce 1s infinite;
     max-width: 10em;
-    box-shadow: 10px 10px 4px #ffbd3f; 
+    box-shadow: 10px 10px 10px #ffbd3f; 
     border-radius: 20px; 
-    border: 2px solid var(--our-pink);
+    /* border: 4px solid black; */
 }
 
 .btn{
@@ -241,15 +313,30 @@ footer{
     border: 2px solid black;
     border-radius: 10px;
     padding: 10px;
-
+    color: var(--text-color);
+    background-color: var(--input-color);
 }
 
+.dark-mode-btn{
+  background-color:darkgrey;
+  border-color:black;
+  color: black;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 100,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+
 .button{
-  
   display: inline-block;
   cursor: pointer;
   border-radius: 8px;
-   padding: 14px 24px 16px;
+  padding: 14px 24px 16px;
   line-height: 1; 
   transition: transform 200ms,background 200ms;
   
