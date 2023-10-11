@@ -11,13 +11,19 @@ const disableDarkMode = () => {
   localStorage.setItem("darkMode", "disabled");
 };
 
+if (darkMode === "enabled") {
+  enableDarkMode();
+}
+
 darkModeToggle.addEventListener("click", () => {
   darkMode = localStorage.getItem("darkMode");
   if (darkMode !== "enabled") {
     enableDarkMode();
     console.log(darkMode);
+    darkModeToggle.innerHTML = "wb_sunny";
   } else {
     disableDarkMode();
     console.log(darkMode);
+    darkModeToggle.innerHTML = "dark_mode";
   }
 });
