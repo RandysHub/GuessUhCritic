@@ -180,8 +180,15 @@ body{
   border-radius: 30px;  
   background-color: var(--background-color) ;
   color: var(--text-color);
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
+.modal > button{
+  margin-top: 1em;
+}
 .modal::backdrop{
   background:black ;
   opacity: .8;

@@ -141,7 +141,7 @@ const checkRounds = () => {
     const modal = document.querySelector(".modal");
     let msg;
     if (playerScore >= 25) {
-      msg = `GG you got ${playerScore} points! You passed`;
+      msg = `GG you got ${playerScore} points! You passed.`;
     } else {
       msg = `GG you got ${playerScore} points! You were ${
         25 - playerScore
