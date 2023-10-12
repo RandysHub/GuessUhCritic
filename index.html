@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Gabarito&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500&family=Lato:wght@700&family=Lora:ital,wght@1,400;1,500;1,600;1,700&family=Roboto+Slab:wght@300&family=Varela+Round&display=swap" rel="stylesheet">
     <script defer src="script.js"></script>
     <script defer src="darkMode.js"></script>
+    <script defer src="instructions.js"></script>
     <link rel="stylesheet" href="styles.css">
     <title>GuessUhCritic</title>
     <link rel="icon" type="image/x-icon" href="GuessUh.png">
@@ -19,7 +20,19 @@
     <div class="modal-container">
         <dialog class="modal">
             <br>
-            <button onclick="window.location.reload();" id="play-again-btn" class="modal-button btn button">Play Again?</button>
+            <button onclick="window.location.reload();" id="play-again-btn" class="modal-button button">Play Again?</button>
+        </dialog>
+
+        <dialog id="instructions" class="modal">
+            <div class="instructions-container">
+                <h2>Welcome to GuessUhCritic!</h2> <br>
+                <p>A game where you are trying to guess the OpenCritic scores of a bunch of games.<br>
+                If you guess the exact score you get 5 points.<br>
+                If you're off by one you get 3.<br>
+                If you are within 3 points of the score you get 1 point. And if you are not at least within 3 points of the game's score, you get no points. If you get at least 25 points you pass!    
+                </p>
+                <button class="button start" onclick="closeInstructions()" >Play</button>
+            </div>
         </dialog>
     </div>
     <div class="banner">
