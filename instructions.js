@@ -8,10 +8,6 @@ const closeInstructions = () => {
   localStorage.setItem("newUser", "false");
 };
 
-const run = () => {
-  instructions.showModal();
-};
-
 if (newUser !== "false") {
-  run();
+  instructions.showModal();
 }

@@ -11,12 +11,16 @@
   --text-color:var(--black);
   --input-color:white;
   --toggle-edge:40vw;
+  --transition-delay:2s;
 }
 
 .dark-mode{
   --background-color: var(--dark-gray);
   --text-color:rgba(255, 255, 255, 0.777);
-  --input-color:var(--dark-gray)k
+  --input-color:var(--dark-gray);
+  transition: background-color var(--transition-delay),
+  color var(--transition-delay),
+  border-color var(--transition-delay);
 }
 
 body{
@@ -294,11 +298,10 @@ body{
   border-color: var(--light-gray);
   line-height: 1.5;
   padding: 5px 10px;
-  transition: box-shadow 100ms ease-in, border 100ms ease-in;
-  /* border: 10px solid --var(--light-gray); */
+  /* transition: box-shadow 100ms ease-in, border 100ms ease-in; */
+  transition: background-color var(--transition-delay);
   color: var(--text-color);
-  background: --var(--light-gray);
-    background-color: var(--input-color);
+  background-color: var(--input-color);
 }
 
 .guess:focus{
@@ -365,7 +368,8 @@ footer{
   border-radius: 8px;
   padding: 14px 24px 16px;
   line-height: 1; 
-  transition: transform 200ms,background 200ms;
+  /* transition: transform 200ms,background 200ms; */
+  transition: background-color var(--transition-delay);
 }
 
 .button:hover{
