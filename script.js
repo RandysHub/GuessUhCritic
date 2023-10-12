@@ -113,7 +113,7 @@ const calculateScore = (score, scoreIndicator) => {
     console.log("BRICK");
     console.log(playerScore);
     score.style.backgroundColor = "var(--metacritic-red)";
-    scoreIndicator.innerHTML = ``;
+    scoreIndicator.innerHTML = `+0`;
   }
 };
 
@@ -132,12 +132,12 @@ const updateRoundCount = () => {
 
 const updateScore = () => {
   const playerScoreSpan = document.querySelector(".player-score");
-  playerScoreSpan.textContent = `${playerScore}`;
+  playerScoreSpan.textContent = `Score: ${playerScore}`;
   console.log(playerScore);
 };
 
 const checkRounds = () => {
-  if (roundCount == 1) {
+  if (roundCount >= 10) {
     const modal = document.querySelector(".modal");
     let msg;
     if (playerScore >= 25) {

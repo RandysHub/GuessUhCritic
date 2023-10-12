@@ -73,16 +73,18 @@ body{
 }
 
 .player-score{
-  top: -3vh;
-  right: 50vw;
+  position: absolute;
+  min-width: 12vw;
+  right: 38vw;
   color: var(--text-color);
-  margin-left: 2vw;
+  /* margin-left: 2vw; */
 }
 
 
 .icon{
-  left: 50vw;
-  margin-right: 2vw;
+  position: absolute;
+  left: 49vw;
+  /* margin-right: 2vw; */
   position: relative;
   cursor: pointer;
 }
@@ -161,7 +163,7 @@ body{
   top: 3vh;
   opacity: 0;
   transition: opacity  .5s;
-  color: black;
+  color: var(--text-color);
   font-weight: bolder;
 }
 
@@ -185,7 +187,6 @@ body{
 .modal > button{
   margin-left: 37%;
   margin-top: 2em;
-  
 }
 .modal::backdrop{
   background:black ;
@@ -293,7 +294,8 @@ body{
 .title-score{
   display: flex;
   flex-direction: row;
-  display: relative;
+  position: relative;
+  left: 1vw;
 }
 
 footer{
