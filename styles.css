@@ -18,9 +18,6 @@
   --background-color: var(--dark-gray);
   --text-color:rgba(255, 255, 255, 0.777);
   --input-color:var(--dark-gray);
-  transition: background-color var(--transition-delay),
-  color var(--transition-delay),
-  border-color var(--transition-delay);
 }
 
 body{
